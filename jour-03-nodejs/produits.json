@@ -1,0 +1,12 @@
+[
+  { "nom": "Clavier mécanique", "prix": 79, "categorie": "informatique" },
+  { "nom": "Souris sans fil", "prix": 25, "categorie": "informatique" },
+  { "nom": "Écran 27 pouces", "prix": 210, "categorie": "informatique" },
+  { "nom": "Casque audio", "prix": 60, "categorie": "informatique" },
+  { "nom": "Chaise de bureau", "prix": 150, "categorie": "mobilier" },
+  { "nom": "Bureau réglable", "prix": 320, "categorie": "mobilier" },
+  { "nom": "Étagère murale", "prix": 45, "categorie": "mobilier" },
+  { "nom": "Cahier ligné", "prix": 3, "categorie": "papeterie" },
+  { "nom": "Stylo plume", "prix": 12, "categorie": "papeterie" },
+  { "nom": "Bloc-notes", "prix": 5, "categorie": "papeterie" }
+]
