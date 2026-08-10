@@ -1,0 +1,13 @@
+{
+  "name": "mini-projet-1-api",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch-path=./index.js --watch-path=./routes --watch-path=./controllers index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
