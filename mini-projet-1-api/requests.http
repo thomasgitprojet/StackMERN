@@ -2,18 +2,18 @@
 GET http://localhost:3000/api/taches
 
 ### Obtenir une tâche
-GET http://localhost:3000/api/taches/1
+GET http://localhost:3000/api/taches/8a8d77bf0960b0a270c5e0d0
 
 ### Créer une tâche
 POST http://localhost:3000/api/taches
 Content-Type: application/json
 
 {
-  "titre": "Nouvelle tâche de test"
+  "titre": "Terminer l'exercice"
 }
 
 ### Modifier une tâche
-PUT http://localhost:3000/api/taches/1
+PUT http://localhost:3000/api/taches/6a8d8cbb398f3db6aacc6a39
 Content-Type: application/json
 
 {

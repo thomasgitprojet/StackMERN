@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "node --watch-path=./index.js --watch-path=./routes --watch-path=./controllers index.js"
+    "dev": "node --watch-path=./index.js --watch-path=./routes --watch-path=./controllers --watch-path=./models index.js"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1",
+    "dotenv": "^16.4.5"
   }
 }
