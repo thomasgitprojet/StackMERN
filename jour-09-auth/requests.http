@@ -1,0 +1,21 @@
+### Inscription
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "motdepasse123"
+}
+
+### Connexion
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "motdepasse123"
+}
+
+### Profil (route protégée — remplace <TOKEN> par celui reçu à la connexion)
+GET http://localhost:3000/api/auth/profil
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhOTU2MjUzODEyNjFmMzQ2ZmUzNTlhNyIsImlhdCI6MTc4ODE3NTAzMiwiZXhwIjoxNzg4MTc4NjMyfQ.yT2dZxsRFMEQs9mM7QZbJbFXm2uZ5QwPtGAz9V4xTpA
