@@ -2,12 +2,14 @@ import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import tachesRoutes from "./routes/taches.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 await mongoose.connect(process.env.MONGO_URI);
 console.log("Connecté à MongoDB");
 
 const app = express();
 app.use(express.json());
+app.use("/api/auth", authRoutes);
 app.use("/api/taches", tachesRoutes);
 app.use((err, req, res, next) => {
   console.error(err);

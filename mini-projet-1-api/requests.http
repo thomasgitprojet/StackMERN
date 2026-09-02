@@ -1,5 +1,24 @@
+### Inscription
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example2.com",
+  "password": "motdepasse123"
+}
+
+### Connexion (récupère le token et colle-le ci-dessous, sans < >)
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example2.com",
+  "password": "motdepasse123"
+}
+
 ### Lister les tâches
 GET http://localhost:3000/api/taches
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhOTgwMmI0MGJkZDliMmU3MjkwODY3MSIsImlhdCI6MTc4ODM0NzEyNSwiZXhwIjoxNzg4MzUwNzI1fQ.NggHZ-ncvhbALUE5i4iYEVAnBIZM2Rom6H6opvZD4IQ
 
 ### Obtenir une tâche
 GET http://localhost:3000/api/taches/8a8d77bf0960b0a270c5e0d0
@@ -7,14 +26,16 @@ GET http://localhost:3000/api/taches/8a8d77bf0960b0a270c5e0d0
 ### Créer une tâche
 POST http://localhost:3000/api/taches
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhOTgwMmI0MGJkZDliMmU3MjkwODY3MSIsImlhdCI6MTc4ODM0NzEyNSwiZXhwIjoxNzg4MzUwNzI1fQ.NggHZ-ncvhbALUE5i4iYEVAnBIZM2Rom6H6opvZD4IQ
 
 {
   "titre": "Terminer l'exercice"
 }
 
 ### Modifier une tâche
-PUT http://localhost:3000/api/taches/6a8d8cbb398f3db6aacc6a39
+PUT http://localhost:3000/api/taches/6a9803250bdd9b2e72908675
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhOTgwMmI0MGJkZDliMmU3MjkwODY3MSIsImlhdCI6MTc4ODM0NzEyNSwiZXhwIjoxNzg4MzUwNzI1fQ.NggHZ-ncvhbALUE5i4iYEVAnBIZM2Rom6H6opvZD4IQ
 
 {
   "titre": "Faire du café",
@@ -22,4 +43,5 @@ Content-Type: application/json
 }
 
 ### Supprimer une tâche
-DELETE http://localhost:3000/api/taches/1
+DELETE http://localhost:3000/api/taches/6a9803250bdd9b2e72908675
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhOTgwMmI0MGJkZDliMmU3MjkwODY3MSIsImlhdCI6MTc4ODM0NzEyNSwiZXhwIjoxNzg4MzUwNzI1fQ.NggHZ-ncvhbALUE5i4iYEVAnBIZM2Rom6H6opvZD4IQ

@@ -22,7 +22,9 @@ export function listerTachesBasic(req, res) {
 }
 export async function listerTaches(req, res, next) {
   try {
-    const toutesLesTaches = await Tache.find();
+  
+    const toutesLesTaches = await Tache.find({ utilisateur: req.user._id });
+
     res.status(200).json(toutesLesTaches);
   } catch (error) {
     next(error);
@@ -55,11 +57,15 @@ export async function obtenirTache(req, res, next) {
      return res.status(400).json({ message: "Format d' ID invalide" });
     } 
     const tache = await Tache.findById(id);
-    if (tache) {
-      res.status(200).json(tache);
-    } else {
-      res.status(404).json({ message: "Tache introuvable" });
+    
+    if (!tache) {
+      return res.status(404).json({ message: "Tache introuvable" });
     }
+    if (!tache.utilisateur.equals(req.user._id)) {
+      return res.status(403).json({ message: "Interdit" });
+    }
+
+    res.status(200).json(tache);
   } catch (error) {
     next(error);
   }
@@ -83,9 +89,10 @@ export function creerTacheBasic(req, res) {
 }
 export async function creerTache(req, res, next) {
   try {
+    const  utilisateur = req.user.id;
     const { titre } = req.body;
     if (titre && titre.length >= 3) {
-      const nouvelleTache = await Tache.create({ titre });
+      const nouvelleTache = await Tache.create({ titre, utilisateur });
       res.status(201).json(nouvelleTache);
     } else {
       res.status(400).json({ message: "Titre trop court" });
@@ -132,11 +139,16 @@ export async function modifierTache(req, res, next) {
     if (!titre || titre.length <= 3){
       return res.status(400).json({ message: "Titre trop court" });
     }
-    const tache = await Tache.findByIdAndUpdate(id, { titre, terminee }, { new: true });
+    const tache = await Tache.findById(id);
     if (!tache) {
       return res.status(404).json({ message: "Tache introuvable" });
-    }   
-    res.status(200).json(tache);
+    }
+    if (!tache.utilisateur.equals(req.user._id)) {
+      return res.status(403).json({ message: "Interdit" });
+    }
+    const tacheUpdate = await Tache.findByIdAndUpdate(id, { titre, terminee }, { new: true });
+
+    res.status(200).json(tacheUpdate);
   } catch (error) {
     next(error);
   }
@@ -168,11 +180,21 @@ export async function supprimerTache(req, res, next) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ message: "Format d' ID invalide" });
     }
-    const tache = await Tache.findByIdAndDelete(id);
+
+    const tache = await Tache.findById(id);
     if (!tache) {
       return res.status(404).json({ message: "Tache introuvable" });
     }
+    if (!tache.utilisateur.equals(req.user._id)) {
+      return res.status(403).json({ message: "Interdit" });
+    }
+
+    await Tache.findByIdAndDelete(id);
     res.status(200).json({ message: "Tache supprimée" });
+    //ou 
+    // const tacheDelete = await Tache.findByIdAndDelete(id);
+    // res.status(200).json(tacheDelete);
+   
   } catch (error) {
     next(error);
   }
