@@ -26,7 +26,7 @@ GET http://localhost:3000/api/taches/8a8d77bf0960b0a270c5e0d0
 ### Créer une tâche
 POST http://localhost:3000/api/taches
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhOTgwMmI0MGJkZDliMmU3MjkwODY3MSIsImlhdCI6MTc4ODM0NzEyNSwiZXhwIjoxNzg4MzUwNzI1fQ.NggHZ-ncvhbALUE5i4iYEVAnBIZM2Rom6H6opvZD4IQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhOTgwNGIxMGJkZDliMmU3MjkwODY4OCIsImlhdCI6MTc4ODg1NDY2OSwiZXhwIjoxNzg4ODU4MjY5fQ.uf4ZWKZzSlsLdc7ZyX-8FhVxG2uneDqKqep7dG3QMZ0
 
 {
   "titre": "Terminer l'exercice"
