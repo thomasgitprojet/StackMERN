@@ -20,6 +20,7 @@
 //
 import { useState, useEffect } from "react";
 import NouvelleTache from "./NouvelleTache.jsx";
+import { Link } from "react-router-dom";
 
 // Jour 13 — Exercice 2 (modifier) et Exercice 3 (supprimer)
 //
@@ -135,7 +136,7 @@ export default function ListeTachesAPI({ token }) {
             <li
               style={{ textDecoration: tache.terminee ? "line-through" : "none" }} 
               key={tache._id}>
-              {tache.titre}
+              <Link to={`/taches/${tache._id}`}>{tache.titre}</Link>
               <button type="button" onClick={() => basculerTache(tache._id, tache )}>{tache.terminee ? "Terminé" : "En cours" }</button>
               <button onClick={() => supprimerTacheAPI(tache._id)}>Supprimer</button>
               {/* Exercice 2 : ajoute un onClick ici (ou sur un bouton dédié)

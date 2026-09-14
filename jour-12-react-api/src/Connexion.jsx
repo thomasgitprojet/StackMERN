@@ -18,11 +18,14 @@
 //    reçu. Si elle échoue, affiche un message d'erreur (un state de plus).
 //
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Connexion({ onConnexion }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [erreur, setErreur] = useState(null);
+
+  const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -42,6 +45,7 @@ export default function Connexion({ onConnexion }) {
       }
       const { token } = await response.json();
       onConnexion(token);
+      navigate("/taches");
     } catch (error) {
       setErreur("Impossible de contacter le serveur")
     }
