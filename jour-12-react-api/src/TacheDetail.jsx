@@ -19,12 +19,14 @@
 // (même principe que pour ListeTachesAPI).
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useAuth } from "./AuthContext.jsx";
 
-export default function TacheDetail({ token }) {
+export default function TacheDetail() {
   const [tache, setTache] = useState(null);
   const [chargement, setChargement] = useState(true);
   const [erreur, setErreur] = useState(null);
   const { id } = useParams();
+  const { token } = useAuth();
 
   useEffect(() => {
     async function fetchTache() {

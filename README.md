@@ -18,7 +18,10 @@ par jour ou par projet.
 - `jour-12-react-api/` — `useEffect`, connexion et récupération de
   données depuis `mini-projet-1-api` (JWT + CORS). Voir
   `EXERCICE-JOUR12.md`. CRUD complet (créer/modifier/supprimer) ajouté
-  au Jour 13, voir `EXERCICE-JOUR13.md`.
+  au Jour 13, voir `EXERCICE-JOUR13.md`. Navigation avec React Router
+  (pages, route protégée, page de détail) ajoutée au Jour 14, voir
+  `EXERCICE-JOUR14.md`. Context API et persistance de la connexion
+  (localStorage) ajoutées au Jour 15, voir `EXERCICE-JOUR15.md`.
 - `jour-06-mongodb/` — MongoDB, Docker, MongoDB Compass (pas de code JS).
 - `jour-07-mongoose/` — Mongoose : connexion, schémas, modèles, validation.
 - `jour-09-auth/` — Authentification : hachage de mot de passe (bcrypt),

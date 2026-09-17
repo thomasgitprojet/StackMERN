@@ -23,10 +23,11 @@
 //
 import { useState } from "react";
 
-export default function NouvelleTache({ token, onTacheCreee }) {
+export default function NouvelleTache({ onTacheCreee }) {
   const [titre, setTitre] = useState("");
   const [erreur, setErreur] = useState(null);
   const [envoiEnCours, setEnvoiEnCours] = useState(false);
+  const { token } = useAuth();
 
 
   async function handleSubmit(event) {

@@ -19,12 +19,14 @@
 //
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext.jsx";
 
-export default function Connexion({ onConnexion }) {
+
+export default function Connexion() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [erreur, setErreur] = useState(null);
-
+  const { connecter } = useAuth();
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
@@ -44,7 +46,7 @@ export default function Connexion({ onConnexion }) {
         return;
       }
       const { token } = await response.json();
-      onConnexion(token);
+      connecter(token);
       navigate("/taches");
     } catch (error) {
       setErreur("Impossible de contacter le serveur")

@@ -18,36 +18,40 @@
 //    tâches (réutilise ce que tu as fait au Jour 11 pour le rendu de
 //    liste avec .map()).
 //
-import { useState, useEffect } from "react";
-import NouvelleTache from "./NouvelleTache.jsx";
-import { Link } from "react-router-dom";
 
 // Jour 13 — Exercice 2 (modifier) et Exercice 3 (supprimer)
 //
 // À toi d'écrire, sur le même modèle que fetchTaches ci-dessous :
 //
 // async function basculerTache(id, tache) {
-//   - fetch en PUT vers `http://localhost:3000/api/taches/${id}`
-//   - headers : Content-Type + Authorization (tu envoies un body ET
-//     la route est protégée)
-//   - body : JSON.stringify({ titre: tache.titre, terminee: !tache.terminee })
-//     (relis modifierTache côté serveur, Jour 8/10 : il attend titre ET
-//     terminee ensemble, pas juste le champ que tu changes)
-//   - si ok, mets à jour le state `taches` : remplace la tâche modifiée
-//     par la nouvelle version reçue du serveur (.map(), comme au Jour 11)
-//
-// async function supprimerTacheAPI(id) {
-//   - fetch en DELETE vers `http://localhost:3000/api/taches/${id}`
-//   - headers : Authorization seulement (pas de body à envoyer ici)
-//   - si ok, retire la tâche du state `taches` (.filter(), comme au Jour 5)
-//
-// Ces deux fonctions n'ont pas besoin d'être dans le useEffect : elles se
-// déclenchent au clic, pas au montage du composant.
+  //   - fetch en PUT vers `http://localhost:3000/api/taches/${id}`
+  //   - headers : Content-Type + Authorization (tu envoies un body ET
+  //     la route est protégée)
+  //   - body : JSON.stringify({ titre: tache.titre, terminee: !tache.terminee })
+  //     (relis modifierTache côté serveur, Jour 8/10 : il attend titre ET
+  //     terminee ensemble, pas juste le champ que tu changes)
+  //   - si ok, mets à jour le state `taches` : remplace la tâche modifiée
+  //     par la nouvelle version reçue du serveur (.map(), comme au Jour 11)
+  //
+  // async function supprimerTacheAPI(id) {
+    //   - fetch en DELETE vers `http://localhost:3000/api/taches/${id}`
+    //   - headers : Authorization seulement (pas de body à envoyer ici)
+    //   - si ok, retire la tâche du state `taches` (.filter(), comme au Jour 5)
+    //
+    // Ces deux fonctions n'ont pas besoin d'être dans le useEffect : elles se
+    // déclenchent au clic, pas au montage du composant.
 
-export default function ListeTachesAPI({ token }) {
+import { useState, useEffect } from "react";
+import NouvelleTache from "./NouvelleTache.jsx";
+import { Link } from "react-router-dom";
+import { useAuth } from "./AuthContext.jsx";
+
+
+export default function ListeTachesAPI() {
   const [taches, setTaches] = useState([]);
   const [chargement, setChargement] = useState(true);
   const [erreur, setErreur] = useState(null);
+  const { token, deconnecter } = useAuth();
 
   // Exercice 1 (suite) : NouvelleTache appelle cette fonction avec la
   // tâche créée par le serveur — ajoute-la au state sans tout recharger.
@@ -84,7 +88,6 @@ export default function ListeTachesAPI({ token }) {
   }, [token]);
 
   async function basculerTache(id, tache) {
-    console.log(id, tache);
     try {
       setErreur(null);
       const response = await fetch(`http://localhost:3000/api/taches/${id}`, {
@@ -145,12 +148,13 @@ export default function ListeTachesAPI({ token }) {
                   visualiser l'état terminee. */}
               {/* Exercice 3 : ajoute un <button> "Supprimer" qui appelle
                   supprimerTacheAPI(tache._id). Attention à onClick={() =>
-                  ...} plutôt que d'appeler la fonction directement, sinon
-                  elle s'exécute au rendu au lieu du clic (piège du Jour 11). */}
+                    ...} plutôt que d'appeler la fonction directement, sinon
+                    elle s'exécute au rendu au lieu du clic (piège du Jour 11). */}
             </li>
           ))}
         </ul>
       )}
+      <button onClick={() => deconnecter() }>Déconnexion</button>
     </div>
   );
 }
