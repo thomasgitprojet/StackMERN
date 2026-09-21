@@ -17,41 +17,14 @@
 // Cette page a besoin du `token` pour l'en-tête Authorization : réfléchis
 // à comment le lui transmettre depuis la route déclarée dans App.jsx
 // (même principe que pour ListeTachesAPI).
-import { useState, useEffect } from "react";
+
 import { useParams, Link } from "react-router-dom";
-import { useAuth } from "./AuthContext.jsx";
+import { useFetch } from "./useFetch.js";
 
 export default function TacheDetail() {
-  const [tache, setTache] = useState(null);
-  const [chargement, setChargement] = useState(true);
-  const [erreur, setErreur] = useState(null);
   const { id } = useParams();
-  const { token } = useAuth();
-
-  useEffect(() => {
-    async function fetchTache() {
-      try {
-        const response = await fetch(`http://localhost:3000/api/taches/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        if (!response.ok) {
-          const { message } = await response.json();
-          setChargement(false);
-          setErreur(message);
-          return;
-        }
-        const data = await response.json();
-        setTache(data);
-        setChargement(false);
-      } catch (error) {
-        setChargement(false);
-        setErreur("Impossible de contacter le serveur")
-      }
-    }
-    fetchTache();
-  }, [id, token]);
+  const { donnees: tache, chargement, erreur } = useFetch(`http://localhost:3000/api/taches/${id}`); 
+  
 
   return <div>
     {chargement ? "Chargement..." : erreur ? erreur : tache && 

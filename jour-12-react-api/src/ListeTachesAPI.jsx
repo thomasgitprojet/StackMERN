@@ -41,16 +41,14 @@
     // Ces deux fonctions n'ont pas besoin d'être dans le useEffect : elles se
     // déclenchent au clic, pas au montage du composant.
 
-import { useState, useEffect } from "react";
 import NouvelleTache from "./NouvelleTache.jsx";
 import { Link } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
+import { useFetch } from "./useFetch.js";
 
 
 export default function ListeTachesAPI() {
-  const [taches, setTaches] = useState([]);
-  const [chargement, setChargement] = useState(true);
-  const [erreur, setErreur] = useState(null);
+  const { donnees: taches, setDonnees: setTaches, chargement, erreur, setErreur } = useFetch("http://localhost:3000/api/taches");
   const { token, deconnecter } = useAuth();
 
   // Exercice 1 (suite) : NouvelleTache appelle cette fonction avec la
@@ -59,33 +57,6 @@ export default function ListeTachesAPI() {
     setTaches([...taches, nouvelleTache]);
   }
 
-  useEffect(() => {
-    async function fetchTaches() {
-      try {
-        setErreur(null);
-        const response = await fetch("http://localhost:3000/api/taches", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        if (!response.ok) {
-          const { message } = await response.json();
-          setChargement(false);
-          setErreur(message);
-          return;
-        }
-        const data = await response.json();
-        setTaches(data);
-        setChargement(false);
-      } catch (error) {
-        setChargement(false);
-        setErreur("Impossible de contacter le serveur")
-      }
-      
-    }
-    fetchTaches();
-
-  }, [token]);
 
   async function basculerTache(id, tache) {
     try {

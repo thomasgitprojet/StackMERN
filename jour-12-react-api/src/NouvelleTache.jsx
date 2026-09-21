@@ -22,6 +22,7 @@
 //    cet exercice — à toi de voir).
 //
 import { useState } from "react";
+import { useAuth } from "./AuthContext.jsx";
 
 export default function NouvelleTache({ onTacheCreee }) {
   const [titre, setTitre] = useState("");

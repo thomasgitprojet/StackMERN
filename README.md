@@ -21,7 +21,8 @@ par jour ou par projet.
   au Jour 13, voir `EXERCICE-JOUR13.md`. Navigation avec React Router
   (pages, route protégée, page de détail) ajoutée au Jour 14, voir
   `EXERCICE-JOUR14.md`. Context API et persistance de la connexion
-  (localStorage) ajoutées au Jour 15, voir `EXERCICE-JOUR15.md`.
+  (localStorage) ajoutées au Jour 15, voir `EXERCICE-JOUR15.md`. Hook
+  personnalisé `useFetch` ajouté au Jour 16, voir `EXERCICE-JOUR16.md`.
 - `jour-06-mongodb/` — MongoDB, Docker, MongoDB Compass (pas de code JS).
 - `jour-07-mongoose/` — Mongoose : connexion, schémas, modèles, validation.
 - `jour-09-auth/` — Authentification : hachage de mot de passe (bcrypt),
