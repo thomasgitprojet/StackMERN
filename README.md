@@ -25,7 +25,9 @@ par jour ou par projet.
   personnalisé `useFetch` ajouté au Jour 16, voir `EXERCICE-JOUR16.md`.
 - `jour-17-typescript/` — introduction à TypeScript : typage de
   fonctions, interfaces, types optionnels et union. Voir
-  `EXERCICE-JOUR17.md`.
+  `EXERCICE-JOUR17.md`. TypeScript appliqué à `jour-12-react-api`
+  (conversion progressive, en commençant par `NouvelleTache.tsx`) au
+  Jour 18, voir `jour-12-react-api/EXERCICE-JOUR18.md`.
 - `jour-06-mongodb/` — MongoDB, Docker, MongoDB Compass (pas de code JS).
 - `jour-07-mongoose/` — Mongoose : connexion, schémas, modèles, validation.
 - `jour-09-auth/` — Authentification : hachage de mot de passe (bcrypt),

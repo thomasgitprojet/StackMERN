@@ -23,15 +23,20 @@
 //
 import { useState } from "react";
 import { useAuth } from "./AuthContext.jsx";
+import { Tache } from "./types";
 
-export default function NouvelleTache({ onTacheCreee }) {
-  const [titre, setTitre] = useState("");
-  const [erreur, setErreur] = useState(null);
+interface NouvelleTacheProps {
+  onTacheCreee: (tache: Tache) => void;
+}
+
+export default function NouvelleTache({ onTacheCreee }: NouvelleTacheProps) {
+  const [titre, setTitre] = useState<string>("");
+  const [erreur, setErreur] = useState<string | null>(null);
   const [envoiEnCours, setEnvoiEnCours] = useState(false);
   const { token } = useAuth();
 
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setErreur(null);
 

@@ -41,7 +41,7 @@
     // Ces deux fonctions n'ont pas besoin d'être dans le useEffect : elles se
     // déclenchent au clic, pas au montage du composant.
 
-import NouvelleTache from "./NouvelleTache.jsx";
+import NouvelleTache from "./NouvelleTache.tsx";
 import { Link } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
 import { useFetch } from "./useFetch.js";
